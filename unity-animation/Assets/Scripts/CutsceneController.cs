@@ -1,30 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CutsceneController : MonoBehaviour
 {
-    public GameObject mainCamera;
-    public MonoBehaviour playerController;
+    Animator animator;
+    public Camera mainCamera;
     public GameObject timerCanvas;
-    public GameObject cutcscenecamera;
-
+    public GameObject Player;
+    public GameObject cutsceneCamera;
     void Start()
     {
-        // Disable gameplay at start
-        cutcscenecamera.SetActive(true);
-        mainCamera.SetActive(false);
-        playerController.enabled = false;
-        timerCanvas.SetActive(false);
-        
+        animator = GetComponent<Animator>();
+        mainCamera.enabled = false;
     }
 
-    // This function will be called at the end of the animation
-    public void EndCutscene()
+    void Update()
     {
-        // Enable gameplay
-        
-        mainCamera.SetActive(true);
-        playerController.enabled = true;
-        timerCanvas.SetActive(true);
-        cutcscenecamera.SetActive(false);
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if ((stateInfo.IsName("Intro01") || stateInfo.IsName("Intro02") || stateInfo.IsName("Intro03")) && stateInfo.normalizedTime >= 1.0f)
+        {
+            Debug.Log("Animation has finished Playing");
+            timerCanvas.SetActive(true);
+            mainCamera.gameObject.SetActive(true);
+            mainCamera.enabled = true;
+            Player.GetComponent<PlayerController>().enabled = true;
+            this.enabled = false;
+            cutsceneCamera.SetActive(false);
+        }
+
     }
 }

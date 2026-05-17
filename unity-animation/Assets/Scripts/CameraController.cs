@@ -1,71 +1,46 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform player;
-    public float distance = 5f;
-    public float height = 2f;
-    public float mouseSensitivity = 2f;
+    public Transform player;  
+    public Vector3 offset;    
+    public float sensitivity = 3.0f;  
+    public bool allowFreeLook = true;
+    public bool isInverted;
 
-    private float currentAngleY = 0f;
-    private float currentAngleX = 0f;
+    private float yaw = 0.0f; 
+    private float pitch = 0.0f; 
 
     void Start()
     {
-        LockCursor();
-    }
-
-    void Update()
-    {
-        if (Time.timeScale == 0f)
-        {
-            UnlockCursor();
-            return;
-        }
-
-        LockCursor();
-
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
-
-        currentAngleY += mouseX;
-
-        if (SettingsData.invertY)
-        {
-            currentAngleX += mouseY;
-        }
-        else
-        {
-            currentAngleX -= mouseY;
-        }
-
-        currentAngleX = Mathf.Clamp(currentAngleX, -20f, 80f);
+        offset = transform.position - player.position;
+        isInverted = PlayerPrefs.GetInt("InvertY", 0) == 1;
     }
 
     void LateUpdate()
     {
-        if (player == null) return;
-        UpdateCameraPosition();
+        FollowPlayer();
+        if (allowFreeLook || Input.GetMouseButton(1))
+        {
+            RotateCamera();
+        }
     }
 
-    private void UpdateCameraPosition()
+    void FollowPlayer()
     {
-        Vector3 offset = new Vector3(0, height, -distance);
-        Quaternion rotation = Quaternion.Euler(currentAngleX, currentAngleY, 0);
-
-        transform.position = player.position + rotation * offset;
-        transform.LookAt(player.position);
+        transform.position = player.position + offset;
     }
 
-    private void LockCursor()
+    void RotateCamera()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
 
-    private void UnlockCursor()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        yaw += mouseX;
+        pitch -= isInverted ? -mouseY : mouseY;
+
+        pitch = Mathf.Clamp(pitch, -30f, 60f);
+        transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+        offset = Quaternion.Euler(pitch, yaw, 0.0f) * new Vector3(0, 0, -offset.magnitude);
     }
 }

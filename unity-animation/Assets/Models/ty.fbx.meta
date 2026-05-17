@@ -1,44 +1,79 @@
 fileFormatVersion: 2
-guid: 2ba589ba54636a2429d280480698cd17
+guid: 4790b294d477e4915a73c82c6ad99e93
 ModelImporter:
-  serializedVersion: 24200
+  serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Boy01_Hair_MAT
+    second: {fileID: 2100000, guid: ff853c461a0a9436bba51ab502a8e22c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Boy01_Hands_MAT
+    second: {fileID: 2100000, guid: 0d87fcd2f716548f591f58d816aca7dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Boy01_Head_MAT
+    second: {fileID: 2100000, guid: 7d08a8a251a7942b692e1f70501df9f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Boy01_LowerBody_MAT
+    second: {fileID: 2100000, guid: 56294dfacd7d246a08fa867120ee8a3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Boy01_Scarf_MAT
+    second: {fileID: 2100000, guid: 02bb5463a2fba4472a34a992b518ab4c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Boy01_Shoes_MAT
+    second: {fileID: 2100000, guid: 2fe5e2a3412a3486fa0a7a77e8e67e54, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Boy01_UpperBody_MAT
+    second: {fileID: 2100000, guid: 795c46183e6114606831d489d6a721f1, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Boy_Hair_diffuse
-    second: {fileID: 2800000, guid: 43fa825b4d9b13f4ba6b303b8eefe109, type: 3}
+    second: {fileID: 2800000, guid: f01b8403802684fab84cb635e41125c4, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Boy_Hands_diffuse
-    second: {fileID: 2800000, guid: 9c1c5e0503e8f9f46b703d12e6218b24, type: 3}
+    second: {fileID: 2800000, guid: 0fac6fbe1a87c4c9aa875e5af112e48e, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Boy_Head_diffuse
-    second: {fileID: 2800000, guid: 33eda623aa56a07408a5d4906ceb0545, type: 3}
+    second: {fileID: 2800000, guid: 88b0de3e6bbda40bd863cfdf9874f995, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Boy_LowerBody_diffuse
-    second: {fileID: 2800000, guid: 06442622fdd33f346a1d42bf83e32b09, type: 3}
+    second: {fileID: 2800000, guid: 4eb7c5182508844e6b4d30838ae1ddb5, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Boy_Scarf_diffuse
-    second: {fileID: 2800000, guid: 694ab083f680eac439a25ffbb7512695, type: 3}
+    second: {fileID: 2800000, guid: bcf81844fa159464292b555f2641078d, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Boy_Shoes_diffuse
-    second: {fileID: 2800000, guid: 32acb16344ec4b24e9c2fb3f8aae6e35, type: 3}
+    second: {fileID: 2800000, guid: 66b13a431e6f343358ec99f76a08c3cc, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Boy_UpperBody_diffuse
-    second: {fileID: 2800000, guid: 16595a9d2e282264eb5621b6a8353c07, type: 3}
+    second: {fileID: 2800000, guid: e80e5fecdd93e4c3286234793e8d05a4, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -51,6 +86,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -91,9 +128,6 @@ ModelImporter:
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
-    generateMeshLods: 0
-    meshLodGenerationFlags: 0
-    maximumMeshLod: -1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8

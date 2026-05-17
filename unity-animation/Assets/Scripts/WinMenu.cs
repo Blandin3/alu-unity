@@ -1,39 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class WinMenu : MonoBehaviour
 {
-    void Start()
-    {
-        UnlockCursor();
-    }
-
     public void MainMenu()
     {
-        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 
     public void Next()
     {
-        Time.timeScale = 1f;
-
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextIndex = currentIndex + 1;
-
-        if (nextIndex < SceneManager.sceneCountInBuildSettings)
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        if (currentScene < SceneManager.sceneCountInBuildSettings - 1)
         {
-            SceneManager.LoadScene(nextIndex);
-        }
-        else
+            SceneManager.LoadScene(currentScene + 1);
+        } else
         {
             SceneManager.LoadScene("MainMenu");
-        }
+        };
     }
 
-    private void UnlockCursor()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
 }
